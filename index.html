@@ -114,6 +114,36 @@
     padding: 5px 10px; border-radius: 6px;
   }
 
+  /* engineering work */
+  .intro { font-size: 17px; color: var(--muted); max-width: 640px; margin: -8px 0 28px; }
+  .cs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .cs {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 26px; display: flex; flex-direction: column; gap: 14px;
+    transition: border-color .2s, transform .2s;
+  }
+  .cs:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .cs.feature { grid-column: 1 / -1; border-left: 4px solid var(--accent); }
+  .cs.feature h3 { font-size: 24px; }
+  .cs-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .cs-kicker { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .cs-metric {
+    font-family: var(--mono); font-size: 12.5px; font-weight: 500;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .cs h3 { font-size: 19px; font-weight: 600; line-height: 1.3; }
+  .cs p { font-size: 15px; color: var(--muted); }
+  .flow {
+    font-family: var(--mono); font-size: 12.5px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    background: var(--bg); border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px;
+  }
+  .flow span { color: var(--ink); }
+  .flow i { font-style: normal; color: var(--accent); }
+  .cs .tags { margin-top: auto; }
+  @media (max-width: 720px) { .cs-grid { grid-template-columns: 1fr; } }
+
   /* focus cards */
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
@@ -138,6 +168,7 @@
     <a href="#top" class="logo">loy<span>.</span>misquith</a>
     <ul>
       <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -153,12 +184,12 @@
     <p class="lede">
       I build <strong>API platforms</strong> and <strong>AI agent infrastructure</strong> —
       the systems that let services, teams and LLM agents work together reliably at scale.
-      9+ years across backend, full-stack and cloud, now focused on MCP, LLM integration
-      and observability on Google Cloud.
+      A full-stack engineer with 9+ years across Java, Python, PHP and JavaScript, now focused
+      on MCP, LLM integration and observability on Google Cloud.
     </p>
     <div class="cta">
       <a class="btn primary" href="#contact">Get in touch</a>
-      <a class="btn" href="https://github.com/loymisquith" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/loy-misquith" target="_blank" rel="noopener">LinkedIn</a>
       <!-- Add your resume PDF to the repo, then uncomment:
       <a class="btn" href="Loy_Misquith_Resume.pdf" target="_blank">Résumé</a> -->
     </div>
@@ -182,34 +213,91 @@
   </div>
 </section>
 
-<section id="impact">
+<section id="work">
   <div class="wrap">
-    <div class="section-title">Impact</div>
-    <div class="stats">
-      <div class="stat"><div class="num">$75–95K</div><div class="label">annual savings from leading the JumpCloud → Okta migration, with zero production bugs</div></div>
-      <div class="stat"><div class="num">90%</div><div class="label">reduction in production downtime through better monitoring practices</div></div>
-      <div class="stat"><div class="num">40%</div><div class="label">fewer bugs by raising testing discipline</div></div>
-      <div class="stat"><div class="num">50%</div><div class="label">infrastructure cost savings through performance and database optimization</div></div>
-    </div>
-  </div>
-</section>
+    <div class="section-title">Selected engineering work</div>
+    <p class="intro">A few systems I've designed and shipped — what the problem was, how I built it, and what changed.</p>
 
-<section id="focus">
-  <div class="wrap">
-    <div class="section-title">What I'm working on</div>
-    <div class="cards">
-      <div class="card">
-        <h4>MCP &amp; agent infrastructure</h4>
-        <p>Designing MCP servers and reusable agent patterns so AI agents like Claude and Gemini can connect to internal platforms safely.</p>
-      </div>
-      <div class="card">
-        <h4>API platform at scale</h4>
-        <p>Standards for API design, gateway management with Apigee, and end-to-end observability with OpenTelemetry on GCP.</p>
-      </div>
-      <div class="card">
-        <h4>AI-assisted engineering</h4>
-        <p>AI code-generation workflows and Vertex AI tooling that help teams ship faster without lowering the bar on quality.</p>
-      </div>
+    <div class="cs-grid">
+
+      <article class="cs feature">
+        <div class="cs-head">
+          <span class="cs-kicker">AI infrastructure</span>
+          <span class="cs-metric">Multi-team adoption</span>
+        </div>
+        <h3>MCP server platform for AI agents</h3>
+        <p>Designed the MCP server architecture that lets AI agents like Claude and Gemini call internal services through a governed tool layer instead of one-off integrations. Built reusable agent patterns so teams can expose new capabilities without re-solving auth, schemas and error handling.</p>
+        <div class="flow">
+          <span>LLM agent</span><i>→</i><span>MCP server</span><i>→</i><span>tool schemas · auth</span><i>→</i><span>internal APIs</span>
+        </div>
+        <div class="tags"><span class="tag">MCP</span><span class="tag">Function calling</span><span class="tag">RAG</span><span class="tag">Vertex AI</span><span class="tag">Python</span></div>
+      </article>
+
+      <article class="cs">
+        <div class="cs-head">
+          <span class="cs-kicker">API platform</span>
+          <span class="cs-metric">Org-wide standard</span>
+        </div>
+        <h3>Core API platform improvements</h3>
+        <p>Set the architecture standards for the core API platform: consistent API design and versioning, Apigee as the single gateway for auth, quotas and routing, and OpenTelemetry tracing across services so every request can be followed end to end and latency hot spots are visible.</p>
+        <div class="flow">
+          <span>Client</span><i>→</i><span>Apigee</span><i>→</i><span>microservices</span><i>→</i><span>OTel traces</span>
+        </div>
+        <div class="tags"><span class="tag">Apigee</span><span class="tag">OpenTelemetry</span><span class="tag">GCP</span><span class="tag">REST</span></div>
+      </article>
+
+      <article class="cs">
+        <div class="cs-head">
+          <span class="cs-kicker">Reliability</span>
+          <span class="cs-metric">−90% downtime</span>
+        </div>
+        <h3>Observability &amp; incident reduction</h3>
+        <p>Rebuilt monitoring and alerting so failures surfaced before customers saw them, and paired it with stronger test automation and review practices that cut bugs by 40%.</p>
+        <div class="flow">
+          <span>Metrics · traces · logs</span><i>→</i><span>alerts</span><i>→</i><span>faster MTTR</span>
+        </div>
+        <div class="tags"><span class="tag">OpenTelemetry</span><span class="tag">Monitoring</span><span class="tag">Test automation</span></div>
+      </article>
+
+      <article class="cs">
+        <div class="cs-head">
+          <span class="cs-kicker">Scale</span>
+          <span class="cs-metric">Built for 10k req/min</span>
+        </div>
+        <h3>Scaling the public API to enterprise load</h3>
+        <p>Leading the effort to take our public API (~50 endpoints) to enterprise grade at 10,000 requests per minute: quotas and rate limiting at the gateway, caching on hot read paths, horizontal autoscaling, and load testing against real traffic patterns to find bottlenecks before customers do.</p>
+        <div class="flow">
+          <span>Load tests</span><i>→</i><span>cache · rate limits</span><i>→</i><span>autoscaling</span><i>→</i><span>SLOs</span>
+        </div>
+        <div class="tags"><span class="tag">Apigee</span><span class="tag">Caching</span><span class="tag">Autoscaling</span><span class="tag">Load testing</span><span class="tag">GCP</span></div>
+      </article>
+
+      <article class="cs">
+        <div class="cs-head">
+          <span class="cs-kicker">Performance</span>
+          <span class="cs-metric">−50% cost</span>
+        </div>
+        <h3>Database &amp; performance tuning</h3>
+        <p>Profiled slow paths in a Java / Spring Boot + VueJS product and reworked queries, indexing and data access, halving infrastructure cost while making the app faster.</p>
+        <div class="flow">
+          <span>Profiling</span><i>→</i><span>query &amp; index rework</span><i>→</i><span>leaner infra</span>
+        </div>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">SQL</span><span class="tag">VueJS</span></div>
+      </article>
+
+      <article class="cs">
+        <div class="cs-head">
+          <span class="cs-kicker">Developer productivity</span>
+          <span class="cs-metric">Across teams</span>
+        </div>
+        <h3>AI code-generation workflows</h3>
+        <p>Built AI-driven code-generation workflows and Vertex AI tools that plug into the existing review and testing process, so teams ship faster without lowering the quality bar.</p>
+        <div class="flow">
+          <span>Spec</span><i>→</i><span>LLM generation</span><i>→</i><span>tests · review</span><i>→</i><span>merge</span>
+        </div>
+        <div class="tags"><span class="tag">Claude API</span><span class="tag">Gemini</span><span class="tag">Vertex AI</span></div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -274,6 +362,41 @@
     <div class="section-title">Skills</div>
     <div class="skills">
       <div>
+        <h4>Languages</h4>
+        <div class="tags">
+          <span class="tag">Java</span><span class="tag">Python</span><span class="tag">PHP</span>
+          <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">SQL</span>
+          <span class="tag">HTML / CSS</span>
+        </div>
+      </div>
+      <div>
+        <h4>Backend &amp; APIs</h4>
+        <div class="tags">
+          <span class="tag">Spring Boot</span><span class="tag">Laravel</span><span class="tag">Node.js</span>
+          <span class="tag">REST APIs</span><span class="tag">Microservices</span><span class="tag">API design</span>
+        </div>
+      </div>
+      <div>
+        <h4>Frontend</h4>
+        <div class="tags">
+          <span class="tag">VueJS</span><span class="tag">React</span><span class="tag">Responsive UI</span>
+        </div>
+      </div>
+      <div>
+        <h4>Databases</h4>
+        <div class="tags">
+          <span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Query optimization</span>
+        </div>
+      </div>
+      <div>
+        <h4>Cloud &amp; DevOps</h4>
+        <div class="tags">
+          <span class="tag">Google Cloud</span><span class="tag">AWS</span><span class="tag">Apigee</span>
+          <span class="tag">OpenTelemetry</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
+          <span class="tag">CI/CD</span><span class="tag">Git</span>
+        </div>
+      </div>
+      <div>
         <h4>AI &amp; LLMs</h4>
         <div class="tags">
           <span class="tag">MCP servers</span><span class="tag">Function calling</span><span class="tag">RAG</span>
@@ -281,23 +404,9 @@
         </div>
       </div>
       <div>
-        <h4>Backend &amp; APIs</h4>
+        <h4>Practices</h4>
         <div class="tags">
-          <span class="tag">API design</span><span class="tag">Microservices</span><span class="tag">PHP / Laravel</span>
-          <span class="tag">Java / Spring Boot</span><span class="tag">REST</span><span class="tag">SQL</span>
-        </div>
-      </div>
-      <div>
-        <h4>Cloud &amp; Platform</h4>
-        <div class="tags">
-          <span class="tag">Google Cloud</span><span class="tag">AWS</span><span class="tag">Apigee</span>
-          <span class="tag">OpenTelemetry</span><span class="tag">Okta</span><span class="tag">Salesforce</span>
-        </div>
-      </div>
-      <div>
-        <h4>Frontend &amp; Practice</h4>
-        <div class="tags">
-          <span class="tag">VueJS</span><span class="tag">System design</span><span class="tag">Test automation</span>
+          <span class="tag">System design</span><span class="tag">Test automation</span><span class="tag">Unit testing</span>
           <span class="tag">Code review</span><span class="tag">Mentoring</span>
         </div>
       </div>
@@ -310,10 +419,8 @@
     <div class="section-title">Contact</div>
     <p>I'm always happy to talk about API platforms, observability, or building with LLMs and MCP. The fastest way to reach me:</p>
     <div class="cta">
-      <!-- Replace with your real email and LinkedIn URL -->
-      <a class="btn primary" href="mailto:you@example.com">Email me</a>
-      <a class="btn" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://github.com/loymisquith" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn primary" href="mailto:misquith.loy11@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/loy-misquith" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </section>
