@@ -1,14 +1,327 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Web Page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loy Misquith — Staff Software Engineer</title>
+<meta name="description" content="Loy Misquith is a Staff Software Engineer at Madhive building API platforms, observability and AI agent infrastructure (MCP, LLMs) on Google Cloud.">
+<meta property="og:title" content="Loy Misquith — Staff Software Engineer">
+<meta property="og:description" content="API platforms, observability and AI agent infrastructure on Google Cloud.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --ink: #16201e;
+    --muted: #5b6764;
+    --line: #e2e0d8;
+    --accent: #00786c;
+    --accent-soft: #e3f1ef;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1413;
+      --surface: #151d1b;
+      --ink: #e8eeec;
+      --muted: #9aa8a5;
+      --line: #25302d;
+      --accent: #3cc2b2;
+      --accent-soft: #15302c;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+  nav .logo { font-family: var(--mono); font-weight: 500; color: var(--ink); }
+  nav .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 22px; font-size: 14px; }
+  nav ul a { color: var(--muted); }
+  nav ul a:hover { color: var(--accent); text-decoration: none; }
+
+  /* hero */
+  .hero { padding: 96px 0 72px; }
+  .eyebrow { font-family: var(--mono); font-size: 14px; color: var(--accent); margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(40px, 7vw, 68px); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+  .hero h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 400; color: var(--muted); margin-top: 12px; }
+  .hero p.lede { font-size: 18px; max-width: 640px; margin-top: 28px; }
+  .hero p.lede strong { font-weight: 600; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+  .btn {
+    display: inline-block; padding: 11px 20px; border-radius: 8px;
+    font-weight: 600; font-size: 15px; border: 1.5px solid var(--accent);
+  }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn:hover { text-decoration: none; opacity: .88; }
+
+  /* sections */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  .section-title {
+    font-family: var(--mono); font-size: 13px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .12em; color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .about p { font-size: 17px; max-width: 720px; margin-bottom: 16px; }
+
+  /* impact */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+  .stat .num { font-size: 34px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+  .stat .label { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+  /* experience */
+  .job { display: grid; grid-template-columns: 170px 1fr; gap: 24px; padding: 26px 0; }
+  .job + .job { border-top: 1px dashed var(--line); }
+  .job .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 4px; }
+  .job h3 { font-size: 20px; font-weight: 600; }
+  .job h3 .co { color: var(--accent); }
+  .role { margin-top: 14px; }
+  .role h4 { font-size: 15px; font-weight: 600; }
+  .role h4 small { font-family: var(--mono); font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
+  .job ul { margin: 8px 0 0 18px; }
+  .job li { margin-bottom: 6px; font-size: 15.5px; }
+  .job li::marker { color: var(--accent); }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .skills h4 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono); font-size: 12.5px;
+    background: var(--accent-soft); color: var(--ink);
+    padding: 5px 10px; border-radius: 6px;
+  }
+
+  /* focus cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  .card h4 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .card p { font-size: 15px; color: var(--muted); }
+
+  /* contact */
+  .contact p { font-size: 18px; max-width: 600px; margin-bottom: 24px; }
+  footer { padding: 32px 0 48px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    .hero { padding: 64px 0 48px; }
+    .job { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
 </head>
 <body>
 
-    <h1>Welcome to My Website</h1>
-    <p>This is a basic paragraph of text on a standard HTML page.</p>
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">loy<span>.</span>misquith</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Hi, I'm</div>
+    <h1>Loy Misquith</h1>
+    <h2>Staff Software Engineer at Madhive</h2>
+    <p class="lede">
+      I build <strong>API platforms</strong> and <strong>AI agent infrastructure</strong> —
+      the systems that let services, teams and LLM agents work together reliably at scale.
+      9+ years across backend, full-stack and cloud, now focused on MCP, LLM integration
+      and observability on Google Cloud.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="https://github.com/loymisquith" target="_blank" rel="noopener">GitHub</a>
+      <!-- Add your resume PDF to the repo, then uncomment:
+      <a class="btn" href="Loy_Misquith_Resume.pdf" target="_blank">Résumé</a> -->
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-title">About</div>
+    <p>
+      I'm a Staff Software Engineer on Madhive's API team, where I set technical direction for the
+      API platform — architecture standards, OpenTelemetry observability and Apigee gateway usage on GCP.
+      I also lead our adoption of AI-assisted development and MCP-based tooling across teams.
+    </p>
+    <p>
+      My path runs from healthcare integrations at NTT Data, through full-stack product engineering
+      at Qmatic, to platform and AI work at Madhive. Along the way I've cared most about the same few
+      things: systems that stay up, migrations that ship without drama, and engineers around me who
+      grow into bigger ownership.
+    </p>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="section-title">Impact</div>
+    <div class="stats">
+      <div class="stat"><div class="num">$75–95K</div><div class="label">annual savings from leading the JumpCloud → Okta migration, with zero production bugs</div></div>
+      <div class="stat"><div class="num">90%</div><div class="label">reduction in production downtime through better monitoring practices</div></div>
+      <div class="stat"><div class="num">40%</div><div class="label">fewer bugs by raising testing discipline</div></div>
+      <div class="stat"><div class="num">50%</div><div class="label">infrastructure cost savings through performance and database optimization</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <div class="section-title">What I'm working on</div>
+    <div class="cards">
+      <div class="card">
+        <h4>MCP &amp; agent infrastructure</h4>
+        <p>Designing MCP servers and reusable agent patterns so AI agents like Claude and Gemini can connect to internal platforms safely.</p>
+      </div>
+      <div class="card">
+        <h4>API platform at scale</h4>
+        <p>Standards for API design, gateway management with Apigee, and end-to-end observability with OpenTelemetry on GCP.</p>
+      </div>
+      <div class="card">
+        <h4>AI-assisted engineering</h4>
+        <p>AI code-generation workflows and Vertex AI tooling that help teams ship faster without lowering the bar on quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-title">Experience</div>
+
+    <div class="job">
+      <div class="when">12/2021 — Present</div>
+      <div>
+        <h3><span class="co">Madhive</span></h3>
+        <div class="role">
+          <h4>Staff Software Engineer <small>03/2026 — Present</small></h4>
+          <ul>
+            <li>Mentor engineers through design reviews, code reviews and technical guidance</li>
+            <li>Drive org-wide adoption of AI-assisted development and MCP-based tooling, with best practices and reusable agent patterns used by multiple teams</li>
+            <li>Lead integration research and architecture recommendations for engineering leadership</li>
+            <li>Design MCP server architecture connecting AI agents across platforms</li>
+            <li>Set technical direction for the API platform: API design standards, OpenTelemetry observability and Apigee on GCP</li>
+            <li>Build AI-driven code-generation workflows and Vertex AI tools and agents</li>
+          </ul>
+        </div>
+        <div class="role">
+          <h4>Senior Software Engineer <small>12/2021 — 03/2026</small></h4>
+          <ul>
+            <li>Led the identity migration from JumpCloud to Okta with zero production bugs, saving $75–95K annually</li>
+            <li>Built microservices in PHP and Laravel; led the API gateway migration to Apigee</li>
+            <li>Delivered Salesforce integrations and cut production downtime 90% through improved monitoring</li>
+            <li>Reduced bugs 40% by strengthening testing and code-review practices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Before Madhive</div>
+      <div>
+        <h3><span class="co">Qmatic</span> — Full-Stack Engineer</h3>
+        <ul>
+          <li>Built full-stack features with VueJS on the front end and Java / Spring Boot on the back end</li>
+          <li>Led database and performance optimization work, including a 50% cost reduction</li>
+          <li>Mentored junior engineers on clean architecture and performance tuning</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Earlier</div>
+      <div>
+        <h3><span class="co">NTT Data</span> — Software Engineer</h3>
+        <ul>
+          <li>Built RESTful integrations between hospital platforms in healthcare systems where reliability was critical</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-title">Skills</div>
+    <div class="skills">
+      <div>
+        <h4>AI &amp; LLMs</h4>
+        <div class="tags">
+          <span class="tag">MCP servers</span><span class="tag">Function calling</span><span class="tag">RAG</span>
+          <span class="tag">Claude API</span><span class="tag">Gemini</span><span class="tag">Vertex AI</span><span class="tag">AI agents</span>
+        </div>
+      </div>
+      <div>
+        <h4>Backend &amp; APIs</h4>
+        <div class="tags">
+          <span class="tag">API design</span><span class="tag">Microservices</span><span class="tag">PHP / Laravel</span>
+          <span class="tag">Java / Spring Boot</span><span class="tag">REST</span><span class="tag">SQL</span>
+        </div>
+      </div>
+      <div>
+        <h4>Cloud &amp; Platform</h4>
+        <div class="tags">
+          <span class="tag">Google Cloud</span><span class="tag">AWS</span><span class="tag">Apigee</span>
+          <span class="tag">OpenTelemetry</span><span class="tag">Okta</span><span class="tag">Salesforce</span>
+        </div>
+      </div>
+      <div>
+        <h4>Frontend &amp; Practice</h4>
+        <div class="tags">
+          <span class="tag">VueJS</span><span class="tag">System design</span><span class="tag">Test automation</span>
+          <span class="tag">Code review</span><span class="tag">Mentoring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-title">Contact</div>
+    <p>I'm always happy to talk about API platforms, observability, or building with LLMs and MCP. The fastest way to reach me:</p>
+    <div class="cta">
+      <!-- Replace with your real email and LinkedIn URL -->
+      <a class="btn primary" href="mailto:you@example.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/loymisquith" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> Loy Misquith · Built with plain HTML &amp; CSS, hosted on GitHub Pages</div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
